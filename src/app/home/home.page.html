@@ -1,0 +1,9 @@
+<ion-toolbar>
+  <ion-title>Home</ion-title>
+</ion-toolbar>
+ <ion-content><ion-list>
+  <app-movie  *ngFor='let m of movies' [movie]="m"
+  (removeMovie)="removeMovie(m)"></app-movie>
+</ion-list></ion-content>>
+
+
