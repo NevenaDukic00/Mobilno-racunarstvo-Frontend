@@ -1,24 +1,22 @@
-<ion-card class="movie">
-  <ion-item class="movie__hero">
-    <img
-            src={{movie.image}}
-            class="image"
-            aria-hidden
-            alt="card-horizontal-image"
-          />
-  </ion-item>
-  <ion-item class="movie__content">
-    <ion-item class="movie__title">
-      <h1 class="heading__primary">{{movie.title}} <i class="fas fa-fire"></i></h1>
-      <p class="movie__tag movie__tag--1">{{movie.genre.name}}</p>
-    </ion-item>
-    <p class="movie__description">
-      {{movie.description}}
-    </p>
-    <ion-item class="movie__details">
-      <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>Duration: {{movie.duration}}</p>
-      <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span>Date: {{pipe.transform(movie.date, 'MMM d y, h:mm a')}}</p>
-    </ion-item>
-    </ion-item> 
-  <ion-item class="movie__price">{{movie.price}}</ion-item>
-</ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        {{ movie.title }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ movie.date }}
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content text-center>
+      <ion-item lines="none"><img [src]="movie.image" class="info-img"></ion-item>
+        <ion-item lines="none">{{ movie.description }}</ion-item>
+        <ion-item lines = "none"><ion-label>Genre: {{ movie.genre.name }}</ion-label></ion-item>
+      <ion-item lines="none">
+        <ion-icon name="star-half" slot="start"></ion-icon>
+        <ion-label>{{ movie.rating }}</ion-label>
+      </ion-item>
+
+    
+    </ion-card-content>
+  </ion-card>
+  
