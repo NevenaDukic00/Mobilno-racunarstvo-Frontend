@@ -7,12 +7,17 @@
   <form #logInForm = "ngForm" (ngSubmit)="logIn(logInForm)">
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required ngModel name = "email"></ion-input>
-    </ion-item>
+      <ion-input type="text"  ngModel name = "email" required email #email="ngModel"></ion-input>
+    </ion-item><span  *ngIf="email.invalid && email.touched">
+      Email is not valid.
+    </span>
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required ngModel name = "password"></ion-input>
+      <ion-input type="password" required ngModel name = "password" #password="ngModel"></ion-input>
     </ion-item>
+    <span *ngIf="password.invalid && password.touched">
+      Password is required.
+    </span>
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>

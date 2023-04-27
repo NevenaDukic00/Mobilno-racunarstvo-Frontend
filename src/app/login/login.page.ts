@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
    }
 
   ngOnInit() {
+    
   }
 
   logIn(loginForm:NgForm){
