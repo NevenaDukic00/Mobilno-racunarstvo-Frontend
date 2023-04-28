@@ -3,7 +3,8 @@
 </ion-toolbar>
  <ion-content><ion-list>
   <app-movie  *ngFor='let m of movies' [movie]="m"
-  (removeMovie)="removeMovie(m)"></app-movie>
+  (removeMovie)="removeMovie(m)"
+  (addT) = "addTicket(m)"></app-movie>
 </ion-list></ion-content>>
 
 

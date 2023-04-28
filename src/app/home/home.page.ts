@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Movie } from '../interfaces/movie';
+import { TicketNetwork } from '../interfaces/ticket-network';
+import { CartService } from '../services/cart.service';
 import { MovieService } from '../services/movie.service';
 
 @Component({
@@ -11,16 +13,21 @@ export class HomePage implements OnInit {
 
 
   movies:Movie[] = new Array();
-  constructor(private movieService:MovieService){}
+  @Input() addT = new EventEmitter<Movie>();
+  constructor(private cartService:CartService,private movieService:MovieService){}
 
+  
   ngOnInit(): void {
     this.loadData();
   }
 
-  
+  addTicket(m:Movie){
+    console.log("Treba da se doda: " + m.title);
+    this.cartService.addTicket(m);
+  }
   public loadData(){
     console.log("Usao ovde");
-    this.movieService.getMovies().subscribe((res)=>{console.log(res);this.movies = res.data;console.log(this.movies);});
+    this.movieService.getMovies().subscribe((res)=>{console.log(res);this.movies = res.data;this.cartService.setMovies(res.data);console.log(this.movies);});
     
   }
   removeMovie(m:Movie){

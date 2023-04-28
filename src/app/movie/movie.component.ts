@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Movie } from '../interfaces/movie';
 import { MovieService } from '../services/movie.service';
 import { IonicModule } from '@ionic/angular';
+import { TicketNetwork } from '../interfaces/ticket-network';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -13,13 +15,24 @@ export class MovieComponent  implements OnInit {
 
   public pipe = new DatePipe('en-US');
   @Input() movie: Movie | undefined;
+
+  @Output() addT = new EventEmitter<Movie>();
+
   // @Output() removeMovie = new EventEmitter<Movie>();
-  constructor(private router:Router,private movieService:MovieService){}
+  constructor(private router:Router,private movieService:MovieService,public authService:AuthService){}
   ngOnInit(): void {
     console.log(this.movie);
     console.log("Usao ovde");
   }
 
+
+  addTicket(){
+    console.log("Usao ovde");
+    this.addT.emit(this.movie);
+  }
+  removeTicket(){
+
+  }
   // bookTickets(){
   //   console.log("Current movie je: " + this.movie);
   //   this.ticketService.setCurrentMovie(this.movie);

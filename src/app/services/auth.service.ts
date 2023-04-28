@@ -30,6 +30,7 @@ export class AuthService {
     sessionStorage.setItem('token', res.access_token);
     sessionStorage.setItem('user', String(res.user.email));
     sessionStorage.setItem('userId', String(res.user.id));
+    sessionStorage.setItem('name', String(res.user.firstName) + String(res.user.lastName));
     this.setUserStatus();
     }
   }
@@ -55,5 +56,9 @@ export class AuthService {
 
   getUser(){
     return Number(sessionStorage.getItem("userId"));
+  }
+ 
+  getUserName(){
+    return sessionStorage.getItem("name");
   }
 }

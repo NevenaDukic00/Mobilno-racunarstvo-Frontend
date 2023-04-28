@@ -7,24 +7,24 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form [formGroup] = "registerForm" (ngSubmit)="register()">
+  <form [formGroup] = "registerForm">
     <ion-item lines="full">
       <ion-label position="floating">First name</ion-label>
-      <ion-input type="text" name="firstName" formControlname="firstName"></ion-input>
+      <ion-input type="text" firstName formControlname="firstName"></ion-input>
     </ion-item>
      <span class="error ion-padding" *ngIf="registerForm.get('firstName').touched">
       First name is required.
     </span>
     <ion-item lines="full">
       <ion-label position="floating">Last name</ion-label>
-      <ion-input type="text" formControlname="lastNameFormControl" required></ion-input>
+      <ion-input type="text" formControlname="lastName"></ion-input>
     </ion-item>
     <!-- <span class="error ion-padding" *ngIf="lastNameFormControl.hasError('required') && lastNameFormControl.touched">
       Last name is required.
     </span> -->
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text"  formControlname="emailFormControl"required placeholder="Ex. pat@example.com"> </ion-input>
+      <ion-input type="text"  formControlname="email" placeholder="Ex. pat@example.com"> </ion-input>
     </ion-item>
     <!-- <span class="error ion-padding" *ngIf="emailFormControl.hasError('required') && emailFormControl.touched">
       Email is required.
@@ -34,14 +34,14 @@
     </span> -->
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlname="passwordFormControl" required></ion-input>
+      <ion-input type="password" formControlname="password"></ion-input>
     </ion-item>
     <!-- <span class="error ion-padding" *ngIf="passwordFormControl.hasError('required') && passwordFormControl.touched">
       Password is required.
     </span> -->
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Register</ion-button>
+        <ion-button type="submit" color="danger" expand="block" (click)="register()">Register</ion-button>
       </ion-col>
     </ion-row>
   </form>

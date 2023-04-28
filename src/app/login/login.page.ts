@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -11,14 +13,16 @@ import { AuthService } from '../services/auth.service';
 export class LoginPage implements OnInit {
 
   loginForm:NgForm;
-  constructor(private router:Router,private authService:AuthService) {
+  login = false;
+  constructor(public alertController: AlertController,private router:Router,private authService:AuthService) {
+    
    }
 
   ngOnInit() {
     
   }
 
-  logIn(loginForm:NgForm){
+  async logIn(loginForm:NgForm){
     console.log(loginForm);
      this.loginForm = loginForm;
     if(this.loginForm.valid){
@@ -26,10 +30,34 @@ export class LoginPage implements OnInit {
         (res)=>{
           this.authService.setSessionData(res);
           if(this.authService.getUserStatus()=="admin"){
-            this.router.navigate(['/home']);
+            this.login = true;
+            this.alertController.create({
+              header: 'Welcome',
+              message: 'Welcome back admin!',
+              buttons: ['OK']
+            }).then(res => {
+              res.present();
+              this.router.navigate(['/home']);
+            });
+            
           }else if(this.authService.getUserStatus()=="user"){
-            this.router.navigate(['/home']);
+            this.login = true;
+            this.alertController.create({
+              header: 'Welcome',
+              message: 'Welcome back' + this.authService.getUserName(),
+              buttons: ['OK']
+            }).then(res => {
+              res.present();
+              this.router.navigate(['/home']);
+            });
           }else{ 
+            this.alertController.create({
+              header: 'Error',
+              message: 'Email or password is wrong!',
+              buttons: ['OK']
+            }).then(res => {
+              res.present();
+            });
           }
         });
     }
