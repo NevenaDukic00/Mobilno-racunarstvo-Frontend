@@ -28,6 +28,13 @@
         </ion-row>
         </ion-grid>
       </ion-item>
+      <ion-item *ngIf="this.authService.getUserStatus()=='admin'" lines="none">
+        <ion-grid>
+        <ion-row>
+        <ion-col><ion-button shape="round" (click)="deleteMovie()">Delete movie</ion-button></ion-col>
+        </ion-row>
+        </ion-grid>
+      </ion-item>
 
     </ion-card-content>
     

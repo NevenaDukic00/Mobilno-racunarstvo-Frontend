@@ -35,9 +35,17 @@ export class HomePage implements OnInit {
   }
   removeMovie(m:Movie){
     console.log(m);
-    this.movies.forEach((element,index)=>{
-      if(element.id==m.id) this.movies.splice(index,1);
-   });
+    this.movieService.delete(m).subscribe((res)=>
+    {
+      console.log(res);
+      if(res.response==="success"){
+        this.movies.forEach((element,index)=>{
+          if(element.id==m.id) this.movies.splice(index,1);
+       });
+      }
+      
+    });
+   
    
   }
 

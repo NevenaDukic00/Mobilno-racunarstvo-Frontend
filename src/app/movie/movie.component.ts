@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TicketNetwork } from '../interfaces/ticket-network';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -19,8 +20,9 @@ export class MovieComponent  implements OnInit {
 
   @Output() addT = new EventEmitter<Movie>();
   @Output() removeT = new EventEmitter<Movie>();
+  @Output() removeMovie = new EventEmitter<Movie>();
   // @Output() removeMovie = new EventEmitter<Movie>();
-  constructor(private router:Router,private movieService:MovieService,public authService:AuthService,public cartService:CartService){}
+  constructor(private router:Router,private movieService:MovieService,public authService:AuthService,public cartService:CartService,public alertController: AlertController){}
   ngOnInit(): void {
     console.log(this.movie);
     console.log("Usao ovde");
@@ -34,29 +36,31 @@ export class MovieComponent  implements OnInit {
   removeTicket(){
     this.removeT.emit(this.movie);
   }
-
+  deleteMovie(){
+      this.alertController.create({
+        header: 'Confirmation',
+        message: 'Do you want to delete movie?',
+        buttons: [
+          {
+            text: 'Yes',
+            handler: () => {
+              console.log('Delete');
+              this.removeMovie.emit(this.movie);
+            }
+          },
+          {
+            text: 'No',
+            handler: () => {
+              console.log('Dont delete');
+            }
+          }
+        ]
+      }).then(res => {
+        res.present();
+      });
+  
+  }
  
-  // bookTickets(){
-  //   console.log("Current movie je: " + this.movie);
-  //   this.ticketService.setCurrentMovie(this.movie);
-  //   this.router.navigate(['/reservation']);
-  // }
-
-  // isLoggedIn(){
-  //   return this.authSerivce.getUserStatus();
-  // }
-
-  // deleteMovie(){
-  //   this.movieService.delete(this.movie).subscribe((res)=>{
-  //     console.log(res);
-  //     if(res.response=="success"){
-  //       alert("Movie has been successfully deleted!");
-  //       this.removeMovie.emit(this.movie);
-  //     }else{
-  //       alert("Deliting movie failed!");
-  //     }
-    
-  //   });
-  // }
+ 
 
 }
