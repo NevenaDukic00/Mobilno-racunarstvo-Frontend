@@ -25,6 +25,9 @@ export class HomePage implements OnInit {
     console.log("Treba da se doda: " + m.title);
     this.cartService.addTicket(m);
   }
+  removeTicket(m:Movie){
+    this.cartService.removeTicket(m);
+  }
   public loadData(){
     console.log("Usao ovde");
     this.movieService.getMovies().subscribe((res)=>{console.log(res);this.movies = res.data;this.cartService.setMovies(res.data);console.log(this.movies);});

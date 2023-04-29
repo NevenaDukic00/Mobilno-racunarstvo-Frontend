@@ -4,7 +4,8 @@
  <ion-content><ion-list>
   <app-movie  *ngFor='let m of movies' [movie]="m"
   (removeMovie)="removeMovie(m)"
-  (addT) = "addTicket(m)"></app-movie>
-</ion-list></ion-content>>
+  (addT) = "addTicket(m)"
+  (removeT) = "removeTicket(m)"></app-movie>
+</ion-list></ion-content>
 
 

@@ -6,6 +6,7 @@ import { MovieService } from '../services/movie.service';
 import { IonicModule } from '@ionic/angular';
 import { TicketNetwork } from '../interfaces/ticket-network';
 import { AuthService } from '../services/auth.service';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -17,9 +18,9 @@ export class MovieComponent  implements OnInit {
   @Input() movie: Movie | undefined;
 
   @Output() addT = new EventEmitter<Movie>();
-
+  @Output() removeT = new EventEmitter<Movie>();
   // @Output() removeMovie = new EventEmitter<Movie>();
-  constructor(private router:Router,private movieService:MovieService,public authService:AuthService){}
+  constructor(private router:Router,private movieService:MovieService,public authService:AuthService,public cartService:CartService){}
   ngOnInit(): void {
     console.log(this.movie);
     console.log("Usao ovde");
@@ -31,8 +32,10 @@ export class MovieComponent  implements OnInit {
     this.addT.emit(this.movie);
   }
   removeTicket(){
-
+    this.removeT.emit(this.movie);
   }
+
+ 
   // bookTickets(){
   //   console.log("Current movie je: " + this.movie);
   //   this.ticketService.setCurrentMovie(this.movie);
