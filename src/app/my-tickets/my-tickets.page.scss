@@ -4,13 +4,13 @@ ion-grid {
     border-style: hidden;
     
     ion-row:first-child {
-      // background-color:  #ce8eb8;
       --ion-background-color:linear-gradient(45deg, #b6dbd9, #c799e6);
+      // background-color:  #ce8eb8;
       font-weight: bold;
     }
     ion-col {
-       border: 1px solid rgb(106, 2, 64);
-      
+      // border: 1px solid rgb(106, 2, 64);
+      border: 1px solid rgb(106, 2, 64);
       border-bottom: 0;
       border-right: 0;
     }
@@ -23,8 +23,8 @@ ion-grid {
     }
   }
   ion-button {
-    // --background: #ce8eb8;
     --ion-background-color:linear-gradient(45deg, #82ddd9, #c071e8);
+    // --background: #ce8eb8;
     // --background-activated:   #65194a;
   
     // --background-hover: #ce8eb8;;

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { IonRouterOutlet } from '@ionic/angular';
 import { Movie } from '../interfaces/movie';
 import { TicketNetwork } from '../interfaces/ticket-network';
 import { CartService } from '../services/cart.service';
@@ -14,10 +15,11 @@ export class HomePage implements OnInit {
 
   movies:Movie[] = new Array();
   @Input() addT = new EventEmitter<Movie>();
-  constructor(private cartService:CartService,private movieService:MovieService){}
+  constructor(private ionRouter:IonRouterOutlet,private cartService:CartService,private movieService:MovieService){}
 
   
   ngOnInit(): void {
+    this.ionRouter.swipeGesture=false;
     this.loadData();
   }
 

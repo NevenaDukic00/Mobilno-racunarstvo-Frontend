@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Cart</ion-title>
+    <ion-title>My Tickets</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,16 +9,12 @@
     <ion-row>
       <ion-col>Movie</ion-col>
       <ion-col>Date</ion-col>
-      <ion-col>Price</ion-col>
       <ion-col>Number of tickets</ion-col>
     </ion-row>
     <ion-row *ngFor="let ticket of tickets; index as i">
       <ion-col *ngIf="ticket.amount!=0">{{ticket.movie.title}}</ion-col>
       <ion-col *ngIf="ticket.amount!=0">{{pipe.transform(ticket.movie.date, 'MMM d, y, h:mm a')}}</ion-col>
-      <ion-col *ngIf="ticket.amount!=0">{{ticket.movie.price }}</ion-col>
       <ion-col *ngIf="ticket.amount!=0">{{ticket.amount}}</ion-col>
     </ion-row>
   </ion-grid>
-  <ion-button *ngIf = "tickets.length!=0"  shape="round" (click)="bookTickets()">Book tickets</ion-button>
-
 </ion-content>

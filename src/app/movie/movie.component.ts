@@ -17,7 +17,6 @@ export class MovieComponent  implements OnInit {
 
   public pipe = new DatePipe('en-US');
   @Input() movie: Movie | undefined;
-
   @Output() addT = new EventEmitter<Movie>();
   @Output() removeT = new EventEmitter<Movie>();
   @Output() removeMovie = new EventEmitter<Movie>();

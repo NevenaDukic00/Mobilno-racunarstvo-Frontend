@@ -9,7 +9,6 @@
         <ion-item [routerLink]="['/home']">Home</ion-item>
         <ion-item [routerLink]="['/login']">Login</ion-item>
         <ion-item [routerLink]="['/register']">Register</ion-item>
-        <ion-item [routerLink]="['/home']">Go to detail</ion-item>
       </ion-list>
      </ion-content>
     </ion-menu>
@@ -20,7 +19,7 @@
       <ion-content>
       <ion-list>
         <ion-item [routerLink]="['/home']">Home</ion-item>
-        <a (click)="logout()"  [routerLink]="['login']">Logout</a>
+        <ion-item (click)="logout()"  [routerLink]="['/login']">Logout</ion-item>
       </ion-list>
      </ion-content>
     </ion-menu>
@@ -32,8 +31,8 @@
       <ion-list>
         <ion-item [routerLink]="['/home']">Home</ion-item>
         <ion-item [routerLink]="['/cart']">Cart</ion-item>
-        <ion-item [routerLink]="['/login']">MyTickets</ion-item>
-        <a (click)="logout()"  [routerLink]="['login']">Logout</a>
+        <ion-item [routerLink]="['/my-tickets']">MyTickets</ion-item>
+        <ion-item (click)="logout()"  [routerLink]="['/login']">Logout</ion-item>
       </ion-list>
      </ion-content>
    </ion-menu>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonRouterOutlet } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -11,11 +11,13 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterPage implements OnInit {
 
+ 
   registerForm:FormGroup;
   isSubmitted = false;
-  constructor(public fb:FormBuilder,private alertController:AlertController,private authService:AuthService,private router:Router) { }
+  constructor(private ionRouter:IonRouterOutlet,public fb:FormBuilder,private alertController:AlertController,private authService:AuthService,private router:Router) { }
 
   ngOnInit() {
+    this.ionRouter.swipeGesture=false;
     this.isSubmitted = false;
     this.registerForm = this.fb.group(
       {
