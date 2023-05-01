@@ -19,6 +19,7 @@ export class CartPage implements OnInit {
 
   tickets:Ticket[] = new Array();
   ngOnInit():void {
+    // console.log("Duzina je: " + this.tickets.length);
     this.ionRouter.swipeGesture=false;
      console.log("U cart ide po ticekts");
      this.tickets = this.cartService.getTickets();
@@ -42,6 +43,8 @@ export class CartPage implements OnInit {
       });
     
     this.tickets = new Array();
+    console.log(this.tickets.length);
     this.cartService.removeFromCart();
   }
+
 }

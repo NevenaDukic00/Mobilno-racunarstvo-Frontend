@@ -65,7 +65,9 @@ export class CartService {
   getNumOfTickets(m:Movie){
     this.tickets.forEach(element => {
       if(element.movie.id==m.id){
+        
         this.amount =  element.amount;
+        console.log("KOlina je: " + this.amount);
       }
     });
     return this.amount;
