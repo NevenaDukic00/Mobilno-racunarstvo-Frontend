@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class MovieService {
+  
 
   url:string = "http://localhost:8000/api/";
 
@@ -23,5 +24,13 @@ export class MovieService {
     .set('responseType', 'text')
     .set('Authorization',  'Bearer ' + this.authService.getAuthToken());
     return this.http.delete(this.url + "movies/" + movie.id,{ headers: headers });
+  }
+
+  updateAMount(m:Movie):Observable<any>{
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+    .set('Accept', 'application/json')
+    .set('responseType', 'text')
+    .set('Authorization',  'Bearer ' + this.authService.getAuthToken());
+    return this.http.put(this.url + "movies/" +m.id, {"amount":m.amount},{ headers: headers });
   }
 }

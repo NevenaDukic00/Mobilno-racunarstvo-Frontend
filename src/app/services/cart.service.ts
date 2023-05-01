@@ -5,6 +5,7 @@ import { Movie } from '../interfaces/movie';
 import { Ticket } from '../interfaces/ticket';
 import { TicketNetwork } from '../interfaces/ticket-network';
 import { AuthService } from './auth.service';
+import { MovieService } from './movie.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CartService {
   tickets:Ticket[] = new Array();
   url:string = "http://localhost:8000/api/";
   amount:number = 0;
-  constructor(private http: HttpClient,private authService:AuthService) {}
+  constructor(private http: HttpClient,private authService:AuthService,private movieService:MovieService) {}
 
   setMovies(movies:Movie[]){
     console.log("Ubacuje u niz");
@@ -52,13 +53,23 @@ export class CartService {
         element.amount++;
       }
     });
-    console.log(this.tickets);
+
+    this.movies.forEach(element => {
+      if(element.id==m.id){
+        element.amount--;
+      }
+    });
   }
 
   removeTicket(m:Movie){
     this.tickets.forEach(element => {
       if(element.movie.id==m.id && element.amount>0){
         element.amount--;
+      }
+    });
+    this.movies.forEach(element => {
+      if(element.id==m.id){
+        element.amount++;
       }
     });
   }
@@ -77,7 +88,18 @@ export class CartService {
                                  .set('Accept', 'application/json')
                                  .set('responseType', 'text')
                                  .set('Authorization',  'Bearer ' + this.authService.getAuthToken());
+    for (let index = 0; index < this.movies.length; index++) {
+      if(this.movies[index].id==ticketN.movie_id){
+        
+        this.movieService.updateAMount(this.movies[index]).subscribe((res)=>console.log(res));
+        break;
+      }
+      
+    }
     return this.http.post(this.url + "tickets",ticketN,{ headers: headers });
+
+    
+    
   }
 
 

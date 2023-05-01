@@ -10,4 +10,5 @@ export interface Movie {
     image:string;
     price:number;
     rating:number;
+    amount:number;
 }

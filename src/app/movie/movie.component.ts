@@ -20,6 +20,8 @@ export class MovieComponent  implements OnInit {
   @Output() addT = new EventEmitter<Movie>();
   @Output() removeT = new EventEmitter<Movie>();
   @Output() removeMovie = new EventEmitter<Movie>();
+
+  res:string = "";
   // @Output() removeMovie = new EventEmitter<Movie>();
   constructor(private router:Router,private movieService:MovieService,public authService:AuthService,public cartService:CartService,public alertController: AlertController){}
   ngOnInit(): void {
@@ -30,10 +32,16 @@ export class MovieComponent  implements OnInit {
 
   addTicket(){
     console.log("Usao ovde");
-    this.addT.emit(this.movie);
+    if(this.movie.amount>0){
+      // this.movie.amount--;
+      this.addT.emit(this.movie);
+    }
   }
   removeTicket(){
-    this.removeT.emit(this.movie);
+    if( this.cartService.getNumOfTickets(this.movie)>0){
+      this.removeT.emit(this.movie);
+    }
+  
   }
   deleteMovie(){
       this.alertController.create({
