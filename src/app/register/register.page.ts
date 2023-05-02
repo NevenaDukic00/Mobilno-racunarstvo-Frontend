@@ -34,7 +34,7 @@ export class RegisterPage implements OnInit {
 
 
   register(){
-  console.log("Poziva se ovo" + this.registerForm.get('firstName').touched);
+  console.log("Poziva se ovo " + this.registerForm.get('firstName').touched);
   this.isSubmitted = true;
    console.log(this.registerForm);
     if(this.registerForm.valid){
