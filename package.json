@@ -27,6 +27,7 @@
     "@ionic/angular": "^7.0.0",
     "ionicons": "^7.0.0",
     "manager": "^1.0.9",
+    "ng2-search-filter": "^0.5.1",
     "node": "^19.8.1",
     "package": "^1.0.1",
     "parse": "^4.0.1",

@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { MovieComponent } from '../movie/movie.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   imports: [
@@ -15,6 +17,7 @@ import { MovieComponent } from '../movie/movie.component';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [HomePage,MovieComponent]
 })

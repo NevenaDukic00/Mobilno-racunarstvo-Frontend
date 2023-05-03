@@ -2,14 +2,25 @@
   <ion-title>Home</ion-title>
 </ion-toolbar>
  <ion-content>
-  <ion-button (click)="onSort()" size="small" color="secondary" shape="round" fill="solid">Sort by price</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8">
+        <ion-searchbar [(ngModel)]="searchTerm" [debounce]="100" ></ion-searchbar>
+      </ion-col>
+        
+      <ion-col>
+        <ion-button (click)="onSort()" size="small" color="secondary" shape="round" fill="solid">Sort</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-list>
-  <app-movie  *ngFor='let m of movies' [movie]="m"
+  <app-movie  *ngFor='let m of movies | filter:searchTerm' [movie]="m"
   (removeMovie)="removeMovie(m)"
   (addT) = "addTicket(m)"
   (removeT) = "removeTicket(m)"
   (removeMovie) = "removeMovie(m)"></app-movie>
 </ion-list>
+ 
 </ion-content>
 
 

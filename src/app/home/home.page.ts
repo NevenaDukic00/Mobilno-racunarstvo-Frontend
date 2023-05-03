@@ -4,6 +4,10 @@ import { Movie } from '../interfaces/movie';
 import { TicketNetwork } from '../interfaces/ticket-network';
 import { CartService } from '../services/cart.service';
 import { MovieService } from '../services/movie.service';
+import { FormControl } from '@angular/forms';
+import { Observable, startWith } from 'rxjs';
+
+// za search verovatno moras da uradis npm install ng2-search-filter
 
 @Component({
   selector: 'app-home',
@@ -12,10 +16,12 @@ import { MovieService } from '../services/movie.service';
 })
 export class HomePage implements OnInit {
 
-
+  searchTerm: string;
   movies:Movie[] = new Array();
   @Input() addT = new EventEmitter<Movie>();
-  constructor(private ionRouter:IonRouterOutlet,private cartService:CartService,private movieService:MovieService){}
+
+  constructor(private ionRouter:IonRouterOutlet,private cartService:CartService,private movieService:MovieService){
+  }
 
   
   ngOnInit(): void {
@@ -48,12 +54,11 @@ export class HomePage implements OnInit {
     });
   }
 
-  // sortChats() {
-  //   return this.Chats.sort((b, a) => new Date(b.lastModifiedDate).getTime() - new Date(a.lastModifiedDate).getTime())
-  // }
 
   onSort(){
     this.movies= this.movies.sort((b,a)=> b.price- a.price);
   }
+
+  
 
 }
