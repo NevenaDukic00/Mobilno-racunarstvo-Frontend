@@ -1,12 +1,15 @@
 <ion-toolbar>
   <ion-title>Home</ion-title>
 </ion-toolbar>
- <ion-content><ion-list>
+ <ion-content>
+  <ion-button (click)="onSort()" size="small" color="secondary" shape="round" fill="solid">Sort by price</ion-button>
+  <ion-list>
   <app-movie  *ngFor='let m of movies' [movie]="m"
   (removeMovie)="removeMovie(m)"
   (addT) = "addTicket(m)"
   (removeT) = "removeTicket(m)"
   (removeMovie) = "removeMovie(m)"></app-movie>
-</ion-list></ion-content>
+</ion-list>
+</ion-content>
 
 

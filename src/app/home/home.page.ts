@@ -45,10 +45,15 @@ export class HomePage implements OnInit {
           if(element.id==m.id) this.movies.splice(index,1);
        });
       }
-      
     });
-   
-   
+  }
+
+  // sortChats() {
+  //   return this.Chats.sort((b, a) => new Date(b.lastModifiedDate).getTime() - new Date(a.lastModifiedDate).getTime())
+  // }
+
+  onSort(){
+    this.movies= this.movies.sort((b,a)=> b.price- a.price);
   }
 
 }
