@@ -26,11 +26,12 @@ const routes: Routes = [
   {
     path: 'my-tickets',
     loadChildren: () => import('./my-tickets/my-tickets.module').then( m => m.MyTicketsPageModule)
-  },  {
+  },
+  {
     path: 'add',
     loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
   },
-
+  
 
   
 ];
