@@ -33,4 +33,13 @@ export class MovieService {
     .set('Authorization',  'Bearer ' + this.authService.getAuthToken());
     return this.http.put(this.url + "movies/" +m.id, {"amount":m.amount},{ headers: headers });
   }
+
+  public changeMoviePrice(m:Movie, p:Number):Observable<any>{
+    console.log("U servisu cena je: ", p);
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json')
+    .append('Accept', 'application/json')
+    .append('responseType', 'text');
+    return this.http.put(this.url + "moviesU?id="+ m.id+ "&price="+p, {headers:headers});
+  }
 }
