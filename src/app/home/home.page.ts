@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { IonRouterOutlet } from '@ionic/angular';
+import { AlertController, IonRefresher, IonRefresherContent, IonRouterOutlet } from '@ionic/angular';
 import { Movie } from '../interfaces/movie';
 import { TicketNetwork } from '../interfaces/ticket-network';
 import { CartService } from '../services/cart.service';
@@ -19,8 +19,9 @@ export class HomePage implements OnInit {
   searchTerm: string;
   movies:Movie[] = new Array();
   @Input() addT = new EventEmitter<Movie>();
+  @Input() updateM = new Number;
 
-  constructor(private ionRouter:IonRouterOutlet,private cartService:CartService,private movieService:MovieService){
+  constructor(private ionRouter:IonRouterOutlet,private cartService:CartService,private movieService:MovieService, private alertCont: AlertController){
   }
 
   
@@ -54,11 +55,14 @@ export class HomePage implements OnInit {
     });
   }
 
-
   onSort(){
     this.movies= this.movies.sort((b,a)=> b.price- a.price);
   }
 
-  
+  handleRefresh(event) {
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+  }
 
 }
