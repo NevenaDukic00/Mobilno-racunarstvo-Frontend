@@ -1,0 +1,17 @@
+<ion-header>
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+        <ion-button (click)="confirm()" strong="true">Save change</ion-button>
+      </ion-buttons>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label position="floating">Price in RSD</ion-label>
+        <ion-input [(ngModel)]="price" type="Number"></ion-input>
+      </ion-item>
+</ion-content>
