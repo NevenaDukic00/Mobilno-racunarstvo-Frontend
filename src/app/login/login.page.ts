@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
             this.login = true;
             this.alertController.create({
               header: 'Welcome',
-              message: 'Welcome back' + this.authService.getUserName(),
+              message: 'Welcome back ' + this.authService.getUserName(),
               buttons: ['OK']
             }).then(res => {
               res.present();
