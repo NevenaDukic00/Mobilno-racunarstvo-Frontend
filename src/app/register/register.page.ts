@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { AlertController, IonRouterOutlet } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
@@ -25,10 +25,10 @@ export class RegisterPage implements OnInit {
       // password: new FormControl(null,[Validators.required,Validators.minLength(8)]),
       // firstName: new FormControl(null,[Validators.required]),
       // lastName: new FormControl(null,[Validators.required]),}
-      email:['',[Validators.email,Validators.required]],
-      password:['',[Validators.required]],
-      firstName:['',[Validators.required]],
-      lastName:['',[Validators.required]],}
+      email:new FormControl('',[Validators.email,Validators.required]),
+      password:new FormControl('',[Validators.required]),
+      firstName:new FormControl('',[Validators.required]),
+      lastName:new FormControl('',[Validators.required]),}
     )
   }
 

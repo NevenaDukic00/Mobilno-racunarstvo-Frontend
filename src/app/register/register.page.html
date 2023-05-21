@@ -7,21 +7,21 @@
   <form [formGroup] = "registerForm">
     <ion-item lines="full">
       <ion-label position="floating">First name</ion-label>
-      <ion-input type="text" firstName formControlname="firstName"></ion-input>
+      <ion-input type="text" firstName formControlName="firstName"></ion-input>
     </ion-item>
      <span class="error ion-padding" *ngIf="registerForm.get('firstName').touched">
       First name is required.
     </span>
     <ion-item lines="full">
       <ion-label position="floating">Last name</ion-label>
-      <ion-input type="text" formControlname="lastName"></ion-input>
+      <ion-input type="text" formControlName="lastName"></ion-input>
     </ion-item>
     <!-- <span class="error ion-padding" *ngIf="lastNameFormControl.hasError('required') && lastNameFormControl.touched">
       Last name is required.
     </span> -->
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text"  formControlname="email" placeholder="Ex. pat@example.com"> </ion-input>
+      <ion-input type="text"  formControlName="email" placeholder="Ex. pat@example.com"> </ion-input>
     </ion-item>
     <!-- <span class="error ion-padding" *ngIf="emailFormControl.hasError('required') && emailFormControl.touched">
       Email is required.
@@ -31,7 +31,7 @@
     </span> -->
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlname="password"></ion-input>
+      <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
     <!-- <span class="error ion-padding" *ngIf="passwordFormControl.hasError('required') && passwordFormControl.touched">
       Password is required.
