@@ -39,7 +39,11 @@ export class HomePage implements OnInit {
   }
   public loadData(){
     console.log("Usao ovde");
-    this.movieService.getMovies().subscribe((res)=>{console.log(res);this.movies = res.data;this.cartService.setMovies(res.data);console.log(this.movies);});
+    this.movieService.getMovies().subscribe((res)=>{
+      console.log(res);
+      this.movies = res.data;
+      this.cartService.setMovies(res.data);
+      console.log(this.movies);});
     
   }
   removeMovie(m:Movie){
