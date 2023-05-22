@@ -6,6 +6,7 @@ import { CartService } from '../services/cart.service';
 import { MovieService } from '../services/movie.service';
 import { FormControl } from '@angular/forms';
 import { Observable, startWith } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 // za search verovatno moras da uradis npm install ng2-search-filter
 
@@ -21,7 +22,7 @@ export class HomePage implements OnInit {
   @Input() addT = new EventEmitter<Movie>();
   @Input() updateM = new Number;
 
-  constructor(private ionRouter:IonRouterOutlet,private cartService:CartService,private movieService:MovieService, private alertCont: AlertController){
+  constructor(private ionRouter:IonRouterOutlet,private authServie:AuthService, private cartService:CartService,private movieService:MovieService, private alertCont: AlertController){
   }
 
   
@@ -48,6 +49,7 @@ export class HomePage implements OnInit {
   }
   removeMovie(m:Movie){
     console.log(m);
+    this.cartService.removeMovie(m);
     this.movieService.delete(m).subscribe((res)=>
     {
       console.log(res);
@@ -66,7 +68,7 @@ export class HomePage implements OnInit {
   handleRefresh(event) {
     setTimeout(() => {
       this.loadData();
-       event.target.complete();
+      event.target.complete();
     }, 2000);
   }
 

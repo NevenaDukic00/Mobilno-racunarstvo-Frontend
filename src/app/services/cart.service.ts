@@ -12,6 +12,7 @@ import { MovieService } from './movie.service';
 })
 export class CartService {
   
+  
 
 
   movies:Movie[];
@@ -22,12 +23,19 @@ export class CartService {
 
   setMovies(movies:Movie[]){
     console.log("Ubacuje u niz");
+    this.movies = [];
+    this.tickets = [];
     this.movies = movies;
     this.movies.forEach(m => {
       this.tickets.push({movie:m,amount:0})
     });
     // console.log("Punimo na pocetku!");
      console.log(this.tickets);
+  }
+  removeMovie(m: Movie) {
+    this.movies.forEach((element,index)=>{
+      if(element.id==m.id) this.movies.splice(index,1);
+   });
   }
 
   removeFromCart() {
