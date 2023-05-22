@@ -65,7 +65,8 @@ export class HomePage implements OnInit {
 
   handleRefresh(event) {
     setTimeout(() => {
-      event.target.complete();
+      this.loadData();
+       event.target.complete();
     }, 2000);
   }
 

@@ -22,7 +22,7 @@ export class MovieComponent  implements OnInit {
   @Output() addT = new EventEmitter<Movie>();
   @Output() removeT = new EventEmitter<Movie>();
   @Output() removeMovie = new EventEmitter<Movie>();
-  Mprice: Number;
+  Mprice: number;
 
   res:string = "";
   // @Output() removeMovie = new EventEmitter<Movie>();
@@ -80,6 +80,7 @@ export class MovieComponent  implements OnInit {
     modal.onDidDismiss().then((data)=>{
       
       this.Mprice = data.data.price;
+      this.movie.price = this.Mprice;
       console.log("Po zatvaranju modala, u movie komponenti je cena: ", this.Mprice);
       this.updateMovie(this.Mprice);
     })

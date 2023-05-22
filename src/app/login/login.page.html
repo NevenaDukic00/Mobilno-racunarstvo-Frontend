@@ -9,16 +9,16 @@
       <ion-label position="floating">Email</ion-label>
       <ion-input type="text"  ngModel name = "email" required email #email="ngModel"></ion-input>
     </ion-item>
-    <span *ngIf="email.invalid && email.touched">
+    <!-- <span *ngIf="email.invalid && email.touched">
       <ion-text color="danger">Email is not valid.</ion-text>
-    </span>
+    </span> -->
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
       <ion-input type="password" required ngModel name = "password" #password="ngModel"></ion-input>
     </ion-item>
-    <span *ngIf="password.invalid && password.touched">
+    <!-- <span *ngIf="password.invalid && password.touched">
       <ion-text color="danger"> Password is required.</ion-text>
-    </span>
+    </span> -->
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="linear-gradient(45deg, #c8dddb, #c071e8)" expand="block">Sign In</ion-button>

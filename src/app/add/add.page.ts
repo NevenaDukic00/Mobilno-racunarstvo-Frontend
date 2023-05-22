@@ -6,6 +6,7 @@ import { Genre } from '../interfaces/genre';
 import { Observable } from 'rxjs';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { type } from 'os';
 
 
 @Component({
@@ -51,8 +52,20 @@ export class AddPage implements OnInit {
       duration: this.form.value['duration'],
       image: this.form.value['image'],
       price: this.form.value['price'],
-      rating: this.form.value['rating']
+      rating: this.form.value['rating'],
+      amount:this.form.value['amount']
     }
+    console.log(typeof(movie.rating*1))
+    if(!parseInt(movie.rating)|| !parseInt(movie.amount)||!parseInt(movie.price)){
+      console.log("Usao ovde");
+      this.alertCtrl.create({
+        header: 'Error',
+        message: "Values for rating, price and amount have to be numbers!",
+        buttons: ['OK']
+      }).then(res => {
+        res.present();
+      });
+    }else{
     console.log(movie.genre_id);
     this.http.post('http://localhost:8000/api/movies', movie)
     //.map(res=> res.json())
@@ -73,6 +86,7 @@ export class AddPage implements OnInit {
     }).then(res => {
       res.present();
     });
+  }
   }
   }
 
