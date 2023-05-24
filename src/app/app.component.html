@@ -6,9 +6,15 @@
         </ion-toolbar>
       <ion-content>
       <ion-list>
-        <ion-item [routerLink]="['/home']">Home</ion-item>
-        <ion-item [routerLink]="['/login']">Login</ion-item>
-        <ion-item [routerLink]="['/register']">Register</ion-item>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/home']">Home</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/login']">Login</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/register']">Register</ion-item>
+        </ion-menu-toggle>
       </ion-list>
      </ion-content>
     </ion-menu>
@@ -18,9 +24,15 @@
         </ion-toolbar>
       <ion-content>
       <ion-list>
-        <ion-item [routerLink]="['/home']">Home</ion-item>
-        <ion-item [routerLink]="['/add']">Add new movie</ion-item>
-        <ion-item (click)="logout()"  [routerLink]="['/login']">Logout</ion-item>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/home']">Home</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/add']">Add new movie</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item (click)="logout()"  [routerLink]="['/login']">Logout</ion-item>
+        </ion-menu-toggle>
       </ion-list>
      </ion-content>
     </ion-menu>
@@ -30,10 +42,18 @@
         </ion-toolbar>
       <ion-content>
       <ion-list>
-        <ion-item [routerLink]="['/home']">Home</ion-item>
-        <ion-item [routerLink]="['/cart']">Cart</ion-item>
-        <ion-item [routerLink]="['/my-tickets']">MyTickets</ion-item>
-        <ion-item (click)="logout()"  [routerLink]="['/login']">Logout</ion-item>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/home']">Home</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/cart']">Cart</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/my-tickets']">MyTickets</ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item (click)="logout()"  [routerLink]="['/login']">Logout</ion-item>
+        </ion-menu-toggle>
       </ion-list>
      </ion-content>
    </ion-menu>
