@@ -1,4 +1,4 @@
-# Mobilno-racunarstvo-Frontend
+# Mobilno-racunarstvo
 
 Aplikacija za rezervaciju bioskopskih karata
 Aplikacija je namenjena osobama koje žele da izbegnu nepotrebno čekanje u redovima ispred bioskopa. Ona omogućava korisnicima prikaz svih trenutnih premijera u bioskopu (sa informacijama kao sto su pocetak i praj premijere, dužina trajanja filma, cena karte), njihovo pretraživanje i sortiranje. Kako bi korisnik rezervisao kartu mora biti ulogovan. U slučaju da korisnik nema nalog, može se registrovati i nastaviti sa rezervacijom.
